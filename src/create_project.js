@@ -1,12 +1,16 @@
 import { Project } from "./project"
 
+const listOfProjects = []
+
 const createProject = (title) => {
     const newProject = new Project(title)
+
+    listOfProjects.push(newProject)
 
     return newProject
 }
 
-export { createProject }
+export { listOfProjects, createProject }
 
 // const createProject = () => {
 //     // const inputProjectContainer = document.createElement('div')
