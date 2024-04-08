@@ -110,6 +110,16 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
+/***/ "./src/create_project.js":
+/*!*******************************!*\
+  !*** ./src/create_project.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   createProject: () => (/* binding */ createProject)\n/* harmony export */ });\n/* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./project */ \"./src/project.js\");\n\n\nconst createProject = (title) => {\n    const newProject = new _project__WEBPACK_IMPORTED_MODULE_0__.Project(title)\n\n    return newProject\n}\n\n\n\n// const createProject = () => {\n//     // const inputProjectContainer = document.createElement('div')\n    \n//     // return project\n    \n//     const projects = [\n//         {\n//             title: 'Wash Car',\n//             todo: [\n//                 {\n//                     title: \"Soak Car\",\n//                     description: \"Spray Car with a good amout of water\",\n//                     due: 'Sunday April 7',\n//                     priority: 'low',\n//                 },\n//                 {\n//                     title: \"Front of car\",\n//                     description: \"Grab a towel and scrub the front of the car\",\n//                     due: 'Sunday spril 7',\n//                     priority: \"high\"\n//                 }\n//             ]\n//         },\n//         {\n//             title: 'Todo List',\n//             todo: [\n//                 {\n//                     title: \"Plan out\",\n//                     description: \"plan out what youre going to do\",\n//                     due: \"Monday April 8\",\n//                     priority: \"medium\"\n//                 },\n//                 {\n//                     title:\"Set up enviornment\",\n//                     description: \"Set up the beginning pages of the project and get github connected\",\n//                     due: \"Monday April 8\",\n//                     priority: \"high\"\n//                 }\n//             ]\n//         }\n//     ]\n    \n//     return projects\n// }\n\n// export { createProject }\n\n//# sourceURL=webpack://to-do/./src/create_project.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -120,13 +130,23 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sty
 
 /***/ }),
 
+/***/ "./src/project.js":
+/*!************************!*\
+  !*** ./src/project.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   Project: () => (/* binding */ Project)\n/* harmony export */ });\nclass Project {\n    static idCounter = 0\n    constructor(name) {\n        this.name = name;\n        this.id = ++Project.idCounter\n        this.todoList = []\n    }\n}\n\n\n\n//# sourceURL=webpack://to-do/./src/project.js?");
+
+/***/ }),
+
 /***/ "./src/sidebar.js":
 /*!************************!*\
   !*** ./src/sidebar.js ***!
   \************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   sidebar: () => (/* binding */ sidebar)\n/* harmony export */ });\nconst sidebar = () => {\n    const sidebarContainer = document.createElement('div')\n    const buttonContainer = document.createElement('div')\n\n    sidebarContainer.classList.add('sidebar')\n    buttonContainer.classList.add('add-btn-container')\n\n    const addProjectButton = document.createElement('button')\n    addProjectButton.textContent = \"Add Project\"\n    addProjectButton.classList.add('btn')\n\n    buttonContainer.appendChild(addProjectButton)\n\n    sidebarContainer.appendChild(buttonContainer)\n    \n    return sidebarContainer\n}\n\n\n\n//# sourceURL=webpack://to-do/./src/sidebar.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   sidebar: () => (/* binding */ sidebar)\n/* harmony export */ });\n/* harmony import */ var _create_project__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./create_project */ \"./src/create_project.js\");\n\n\nconst sidebar = () => {\n    const sidebarContainer = document.createElement('div')\n    const buttonContainer = document.createElement('div')\n\n    sidebarContainer.classList.add('sidebar')\n    buttonContainer.classList.add('add-btn-container')\n\n    const addProjectButton = document.createElement('button')\n    addProjectButton.textContent = \"Add Project\"\n    addProjectButton.classList.add('btn')\n    \n    buttonContainer.appendChild(addProjectButton)\n\n    addProjectButton.addEventListener('click', () => {\n        const title = (0,_create_project__WEBPACK_IMPORTED_MODULE_0__.createProject)(prompt('Add a title'))\n\n        const todoItem = document.createElement('h2')\n        todoItem.classList.add('todo-item')\n        todoItem.textContent = title.name\n\n        sidebarContainer.appendChild(todoItem)\n    })\n\n\n    sidebarContainer.appendChild(buttonContainer)\n    \n    return sidebarContainer\n}\n\n\n\n//# sourceURL=webpack://to-do/./src/sidebar.js?");
 
 /***/ })
 
