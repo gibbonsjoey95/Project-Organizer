@@ -1,15 +1,26 @@
-const logName = (item) => {
-    return item
+import { listOfProjects } from "./create_project"
+import { test } from "./test"
+
+const projectContainer = document.createElement('div')
+projectContainer.classList.add('project-content')
+
+const projectTitle = document.createElement('h2')
+
+projectContainer.appendChild(projectTitle)
+
+const updateProjectTitle = () => {
+    let activeProject = listOfProjects.find((project) => project.active)
+
+    projectTitle.textContent = activeProject.name
+
+    console.log(listOfProjects)
 }
 
-const projectContent = () => {
-    const projectContent = document.createElement('div')
+const mainContent = () => {
+    updateProjectTitle()
 
-    projectContent.classList.add("project-content")
-
-    projectContent.textContent = logName()
-
-    return projectContent
+    return projectContainer
 }
 
-export { projectContent, logName }
+
+export { mainContent }

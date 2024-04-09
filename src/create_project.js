@@ -1,6 +1,13 @@
 import { Project } from "./project"
 
-const listOfProjects = []
+const listOfProjects = [
+    {
+        name: 'Default',
+        active: true,
+        id: 1,
+        todoList: []
+    }
+]
 
 const createProject = (title) => {
     const newProject = new Project(title)

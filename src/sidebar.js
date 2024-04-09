@@ -1,5 +1,7 @@
 import { listOfProjects, createProject } from "./create_project"
-import { logName } from "./project_content"
+import { mainContent } from "./project_content"
+
+import { test } from "./test"
 
 const sidebar = () => {
     const sidebarContainer = document.createElement('div')
@@ -25,13 +27,22 @@ const sidebar = () => {
             item.textContent = project.name
 
             item.addEventListener('click', () => {
-                logName(item.textContent)
+                listOfProjects.forEach((p) => {
+                    p.active = false
+                })
+
+                project.active = true
+                
+                mainContent()
+                
             })
 
             projectTitleContainer.appendChild(item)
         })
         
     }
+
+    updateList()
 
     addProjectButton.addEventListener('click', () => {
         createProject(prompt('Add a title'))
