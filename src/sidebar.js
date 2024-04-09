@@ -1,8 +1,6 @@
 import { listOfProjects, createProject } from "./create_project"
 import { mainContent } from "./project_content"
 
-import { test } from "./test"
-
 const sidebar = () => {
     const sidebarContainer = document.createElement('div')
     const buttonContainer = document.createElement('div')

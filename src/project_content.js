@@ -1,5 +1,4 @@
 import { listOfProjects } from "./create_project"
-import { test } from "./test"
 
 const projectContainer = document.createElement('div')
 projectContainer.classList.add('project-content')
