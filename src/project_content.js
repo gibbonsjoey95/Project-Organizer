@@ -49,18 +49,35 @@ const updateTodoList = () => {
         const todoContainer = document.createElement('div')
         todoContainer.classList.add('todo-container')
 
+        const todoTitleContainer = document.createElement('div')
+        todoTitleContainer.classList.add('todo-title-container')
+
         const todoTitle = document.createElement('h3')
+        todoTitle.classList.add('todo-title')
         todoTitle.textContent = todo.title
 
+        todoTitleContainer.appendChild(todoTitle)
+
+        const todoTitleBar = document.createElement('div')
+        todoTitleBar.classList.add('todo-title-bar')
+
+        const todoContentContainer = document.createElement('div')
+        todoContentContainer.classList.add('todo-content-container')
+
         const todoDueDate = document.createElement('p')
-        todoDueDate.textContent = todo.dueDate
+        todoDueDate.classList.add('todo-due-date')
+        todoDueDate.textContent = `Due: ${todo.dueDate}`
 
         const todoPriority = document.createElement('p')
-        todoPriority.textContent = todo.priority
+        todoPriority.classList.add('todo-priority')
+        todoPriority.textContent = `Priority: ${todo.priority}`
 
-        todoContainer.appendChild(todoTitle)
-        todoContainer.appendChild(todoDueDate)
-        todoContainer.appendChild(todoPriority)
+        todoContentContainer.appendChild(todoDueDate)
+        todoContentContainer.appendChild(todoPriority)
+
+        todoContainer.appendChild(todoTitleContainer)
+        todoContainer.appendChild(todoTitleBar)
+        todoContainer.appendChild(todoContentContainer)
 
         projectTodoContainer.appendChild(todoContainer)
     })

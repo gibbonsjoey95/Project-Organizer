@@ -29,6 +29,46 @@ const listOfProjects = [
                 priority: 'low',
                 checklist: 'incomplete',
                 notes: 'Example 2'                
+            },
+            {
+                title: "Front ofCar",
+                description: "Grab towel and scrub front of car",
+                dueDate: 'Sunday April 7',
+                priority: 'low',
+                checklist: 'incomplete',
+                notes: 'Example 2'                
+            },
+            {
+                title: "Front ofCar",
+                description: "Grab towel and scrub front of car",
+                dueDate: 'Sunday April 7',
+                priority: 'low',
+                checklist: 'incomplete',
+                notes: 'Example 2'                
+            },
+            {
+                title: "Front ofCar",
+                description: "Grab towel and scrub front of car",
+                dueDate: 'Sunday April 7',
+                priority: 'low',
+                checklist: 'incomplete',
+                notes: 'Example 2'                
+            },
+            {
+                title: "Front ofCar",
+                description: "Grab towel and scrub front of car",
+                dueDate: 'Sunday April 7',
+                priority: 'low',
+                checklist: 'incomplete',
+                notes: 'Example 2'                
+            },
+            {
+                title: "Front ofCar",
+                description: "Grab towel and scrub front of car",
+                dueDate: 'Sunday April 7',
+                priority: 'low',
+                checklist: 'incomplete',
+                notes: 'Example 2'                
             }
         ]
     }
