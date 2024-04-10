@@ -7,11 +7,12 @@ const buttonContainer = document.createElement('div')
 
 sidebarContainer.classList.add('sidebar')
 buttonContainer.classList.add('add-btn-container')
-projectTitleContainer.classList.add('project-title-container')
+projectTitleContainer.classList.add('project-title-container--sidebar')
 
 const addProjectButton = document.createElement('button')
 addProjectButton.textContent = "Add Project"
 addProjectButton.classList.add('btn')
+addProjectButton.classList.add('add-project-btn')
 
 buttonContainer.appendChild(addProjectButton)
 
