@@ -25,8 +25,12 @@ titleBar.classList.add('title-bar')
 projectTitleContainer.appendChild(projectTitle)
 projectTitleContainer.appendChild(todoButtonContainer)
 
+const projectTodoContainer = document.createElement('div')
+projectTodoContainer.classList.add('project-todo-container')
+
 projectContainer.appendChild(projectTitleContainer)
 projectContainer.appendChild(titleBar)
+projectContainer.appendChild(projectTodoContainer)
 
 const updateProjectTitle = () => {
     let activeProject = listOfProjects.find((project) => project.active)
@@ -36,8 +40,35 @@ const updateProjectTitle = () => {
     console.log(listOfProjects)
 }
 
+const updateTodoList = () => {
+    projectTodoContainer.textContent = ''
+
+    let activeProject = listOfProjects.find((project) => project.active)
+    
+    activeProject.todoList.forEach((todo) => {
+        const todoContainer = document.createElement('div')
+        todoContainer.classList.add('todo-container')
+
+        const todoTitle = document.createElement('h3')
+        todoTitle.textContent = todo.title
+
+        const todoDueDate = document.createElement('p')
+        todoDueDate.textContent = todo.dueDate
+
+        const todoPriority = document.createElement('p')
+        todoPriority.textContent = todo.priority
+
+        todoContainer.appendChild(todoTitle)
+        todoContainer.appendChild(todoDueDate)
+        todoContainer.appendChild(todoPriority)
+
+        projectTodoContainer.appendChild(todoContainer)
+    })
+}
+
 const mainContent = () => {
     updateProjectTitle()
+    updateTodoList()
 
     return projectContainer
 }

@@ -17,7 +17,7 @@ addProjectButton.classList.add('add-project-btn')
 buttonContainer.appendChild(addProjectButton)
 
 
-const updateList = () => {
+const updateProjectList = () => {
     projectTitleContainer.textContent = ''
 
     listOfProjects.forEach((project) => {
@@ -41,12 +41,12 @@ const updateList = () => {
 }
 
 const sidebar = () => {
-    updateList()
+    updateProjectList()
 
     addProjectButton.addEventListener('click', () => {
         createProject(prompt('Add a title'))
 
-        updateList()
+        updateProjectList()
     })
 
 
