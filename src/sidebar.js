@@ -48,18 +48,10 @@ const updateProjectList = () => {
 const sidebar = () => {
     updateProjectList()
 
-    // addProjectButton.addEventListener('click', () => {
-    //     createProject(prompt('Add a title'))
-
-    //     updateProjectList()
-    // })
-
-
-
     sidebarContainer.appendChild(buttonContainer)
     sidebarContainer.appendChild(projectTitleContainer)
     
     return sidebarContainer
 }
 
-export { sidebar }
+export { sidebar, updateProjectList }

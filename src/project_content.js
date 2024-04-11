@@ -1,4 +1,5 @@
 import { listOfProjects } from "./create_project"
+import { updateProjectList } from "./sidebar"
 
 import { Todo } from "./todo"
 
@@ -14,11 +15,15 @@ projectTitle.classList.add('project-title')
 const todoButtonContainer = document.createElement('div')
 todoButtonContainer.classList.add('todo-button-container')
 
+const removeProjectButton = document.createElement('button')
+removeProjectButton.textContent = 'Remove Project'
+
 const addTodoButton = document.createElement('button')
 addTodoButton.textContent = 'Add To-do'
 addTodoButton.classList.add('btn')
 addTodoButton.classList.add('add-todo-button')
 
+todoButtonContainer.appendChild(removeProjectButton)
 todoButtonContainer.appendChild(addTodoButton)
 
 const titleBar = document.createElement('div')
@@ -33,6 +38,21 @@ projectTodoContainer.classList.add('project-todo-container')
 projectContainer.appendChild(projectTitleContainer)
 projectContainer.appendChild(titleBar)
 projectContainer.appendChild(projectTodoContainer)
+
+removeProjectButton.addEventListener('click', () => {
+    let active = findActiveProject()
+
+    let index = listOfProjects.indexOf(active)
+
+    if(index !== -1){
+        listOfProjects.splice(index, 1)
+        updateProjectList()
+        // updateProjectTitle()
+        // updateTodoList()
+        projectTitle.textContent = ''
+        projectTodoContainer.textContent = ''
+    }
+})
 
 addTodoButton.addEventListener('click', () => {
     let active = findActiveProject();
