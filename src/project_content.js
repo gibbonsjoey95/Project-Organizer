@@ -1,5 +1,7 @@
 import { listOfProjects } from "./create_project"
 
+import { Todo } from "./todo"
+
 const projectContainer = document.createElement('div')
 projectContainer.classList.add('project-content')
 
@@ -32,20 +34,24 @@ projectContainer.appendChild(projectTitleContainer)
 projectContainer.appendChild(titleBar)
 projectContainer.appendChild(projectTodoContainer)
 
-const updateProjectTitle = () => {
-    let activeProject = listOfProjects.find((project) => project.active)
+addTodoButton.addEventListener('click', () => {
+    let active = findActiveProject();
 
-    projectTitle.textContent = activeProject.name
+    let newTodo = new Todo(prompt("Add a title"), prompt("Description"), prompt("Due Date:"), prompt("priority"), prompt("Checklist"), prompt("Notes"))
 
-    console.log(listOfProjects)
-}
+    active.todoList.push(newTodo)
 
-const updateTodoList = () => {
-    projectTodoContainer.textContent = ''
+    updateTodoList()
+})
 
+const findActiveProject = () => {
     let activeProject = listOfProjects.find((project) => project.active)
     
-    activeProject.todoList.forEach((todo) => {
+    return activeProject
+}
+
+const createTodoDom = (active) => {
+    active.todoList.forEach((todo) => {
         const todoContainer = document.createElement('div')
         todoContainer.classList.add('todo-container')
 
@@ -81,6 +87,20 @@ const updateTodoList = () => {
 
         projectTodoContainer.appendChild(todoContainer)
     })
+}
+
+const updateProjectTitle = () => {
+    let active = findActiveProject()
+
+    projectTitle.textContent = active.name
+}
+
+const updateTodoList = () => {
+    projectTodoContainer.textContent = ''
+
+    let active = findActiveProject()
+
+    createTodoDom(active)
 }
 
 const mainContent = () => {
