@@ -3,6 +3,10 @@ import { updateProjectList } from "./sidebar"
 
 import { Todo } from "./todo"
 
+const todoFormModal = document.querySelector('#todoFormModal')
+const todoCloseModalButton = document.querySelector('#todoCloseModalButton')
+const todoForm = document.querySelector('#todoForm')
+
 const projectContainer = document.createElement('div')
 projectContainer.classList.add('project-content')
 
@@ -39,6 +43,34 @@ projectContainer.appendChild(projectTitleContainer)
 projectContainer.appendChild(titleBar)
 projectContainer.appendChild(projectTodoContainer)
 
+todoForm.addEventListener('submit', (event) => {
+    event.preventDefault()
+
+    const title = document.querySelector('#title')
+    const description = document.querySelector('#description')
+    const dueDate = document.querySelector('#dueDate')
+    const priority = document.querySelector('#priority')
+    const checklist = document.querySelector('#checklist')
+    const notes = document.querySelector('#notes')
+
+    let active = findActiveProject()
+
+    let newTodo = new Todo(title.value, description.value, dueDate.value, priority.value, checklist.checked, notes.value)
+    
+    active.todoList.push(newTodo)
+
+    todoFormModal.classList.add('hidden')
+    
+    title.value = ''
+    description.value = ''
+    dueDate.value = ''
+    priority.value = 'low'
+    checklist.checked = false
+    notes.value = ''
+
+    updateTodoList()
+})
+
 removeProjectButton.addEventListener('click', () => {
     let active = findActiveProject()
 
@@ -47,21 +79,17 @@ removeProjectButton.addEventListener('click', () => {
     if(index !== -1){
         listOfProjects.splice(index, 1)
         updateProjectList()
-        // updateProjectTitle()
-        // updateTodoList()
         projectTitle.textContent = ''
         projectTodoContainer.textContent = ''
     }
 })
 
 addTodoButton.addEventListener('click', () => {
-    let active = findActiveProject();
+    todoFormModal.classList.remove('hidden')
+})
 
-    let newTodo = new Todo(prompt("Add a title"), prompt("Description"), prompt("Due Date:"), prompt("priority"), prompt("Checklist"), prompt("Notes"))
-
-    active.todoList.push(newTodo)
-
-    updateTodoList()
+todoCloseModalButton.addEventListener('click', () => {
+    todoFormModal.classList.add('hidden')
 })
 
 const findActiveProject = () => {

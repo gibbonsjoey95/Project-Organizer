@@ -13,32 +13,54 @@
     <div class="content-container" id="contentContainer">
     </div>
 
-    <div class="todo-form hidden" id="todoForm">
-        <form id="todoForm">
-        <label for="title">Title:</label><br>
-        <input type="text" id="title" name="title" required><br><br>
+    <div id="projectNameFormModal" class="modal hidden">
+        <div class="project-name-form-container">
+            <div class="close-modal-container">
+                <div id="projectNameCloseModalButton" class="close-modal-button">
+                    <h3>X</h3>
+                </div>
+            </div>
+            <form id="projectNameForm">
+                <label for="projectName">Project Name:</label><br>
+                <input type="text" id="projectName" name="projectName" required><br><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
 
-        <label for="description">Description:</label><br>
-        <textarea id="description" name="description" rows="4" cols="50" required></textarea><br><br>
+    <div id="todoFormModal" class="modal hidden">
+        <div class="todo-form-container">
+            <div class="close-modal-container">
+                <div id="todoCloseModalButton" class="close-modal-button">
+                    <h3>X</h3>
+                </div>
+            </div>
+            <form id="todoForm" >
+                <label for="title">Title:</label><br>
+                <input type="text" id="title" name="title" required><br><br>
+        
+                <label for="description">Description:</label><br>
+                <textarea id="description" name="description" rows="4" cols="50" required></textarea><br><br>
+        
+                <label for="dueDate">Due Date:</label><br>
+                <input type="date" id="dueDate" name="dueDate" required><br><br>
+        
+                <label for="priority">Priority:</label><br>
+                <select id="priority" name="priority" required>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select><br><br>
 
-        <label for="dueDate">Due Date:</label><br>
-        <input type="date" id="dueDate" name="dueDate" required><br><br>
-
-        <label for="priority">Priority:</label><br>
-        <select id="priority" name="priority" required>
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
-        </select><br><br>
-
-        <label for="checklist">Checklist:</label><br>
-        <textarea id="checklist" name="checklist" rows="4" cols="50"></textarea><br><br>
-
-        <label for="notes">Notes:</label><br>
-        <textarea id="notes" name="notes" rows="4" cols="50"></textarea><br><br>
-
-        <input type="submit" value="Submit">
-    </form>
+                <label for="checklist">Completed:</label><br>
+                <input type="checkbox" id="checklist" name="checklist"><br><br>
+        
+                <label for="notes">Notes:</label><br>
+                <textarea id="notes" name="notes" rows="4" cols="50"></textarea><br><br>
+        
+                <input type="submit" value="Submit">
+            </form>
+        </div>
     </div>
 </body>
 </html>

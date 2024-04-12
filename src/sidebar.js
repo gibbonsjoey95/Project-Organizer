@@ -1,6 +1,9 @@
 import { listOfProjects, createProject } from "./create_project"
 import { mainContent } from "./project_content"
 
+const projectNameFormModal = document.querySelector('#projectNameFormModal')
+const projectNameForm = document.querySelector('#projectNameForm')
+
 const sidebarContainer = document.createElement('div')
 const projectTitleContainer = document.createElement('div')
 const buttonContainer = document.createElement('div')
@@ -16,10 +19,22 @@ addProjectButton.classList.add('add-project-btn')
 
 buttonContainer.appendChild(addProjectButton)
 
-addProjectButton.addEventListener('click', () => {
-    createProject(prompt('Add a title'))
+projectNameForm.addEventListener('submit', (event) => {
+    event.preventDefault()
 
-    updateProjectList()
+    const projectName = document.querySelector('#projectName')
+    
+    createProject(projectName.value)
+
+    projectNameFormModal.classList.add('hidden')
+
+    projectName.value = ''
+    
+    updateProjectList()   
+})
+
+addProjectButton.addEventListener('click', () => {
+    projectNameFormModal.classList.remove('hidden')
 })
 
 const updateProjectList = () => {
