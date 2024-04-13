@@ -13,7 +13,9 @@ const listOfProjects = [
                 dueDate: 'April 10, 2024',
                 priority: 'High',
                 checklist: 'incomplete',
-                notes: 'This is just default'
+                notes: 'This is just default',
+                id: 1,
+                active: false
             }, 
         ]
     }

@@ -1,8 +1,11 @@
 import { listOfProjects, createProject } from "./create_project"
 import { mainContent } from "./project_content"
 
+// figure out a work around for this
 const projectNameFormModal = document.querySelector('#projectNameFormModal')
 const projectNameForm = document.querySelector('#projectNameForm')
+
+const projectNameCloseModalButton = document.querySelector('#projectNameCloseModalButton')
 
 const sidebarContainer = document.createElement('div')
 const projectTitleContainer = document.createElement('div')
@@ -18,6 +21,10 @@ addProjectButton.classList.add('btn')
 addProjectButton.classList.add('add-project-btn')
 
 buttonContainer.appendChild(addProjectButton)
+
+projectNameCloseModalButton.addEventListener('click', () => {
+    projectNameFormModal.classList.add('hidden')
+})
 
 projectNameForm.addEventListener('submit', (event) => {
     event.preventDefault()

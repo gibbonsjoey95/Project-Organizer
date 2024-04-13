@@ -28,6 +28,21 @@
         </div>
     </div>
 
+    <div id="editProjectNameFormModal" class="modal hidden">
+        <div class="project-name-form-container">
+            <div class="close-modal-container">
+                <div id="editProjectNameCloseModalButton" class="close-modal-button">
+                    <h3>X</h3>
+                </div>
+            </div>
+            <form id="editProjectNameForm">
+                <label for="projectName">Project Name:</label><br>
+                <input type="text" id="editProjectName" name="projectName" required><br><br>
+                <input type="submit" value="Edit">
+            </form>
+        </div>
+    </div>
+
     <div id="todoFormModal" class="modal hidden">
         <div class="todo-form-container">
             <div class="close-modal-container">
@@ -57,6 +72,41 @@
         
                 <label for="notes">Notes:</label><br>
                 <textarea id="notes" name="notes" rows="4" cols="50"></textarea><br><br>
+        
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+
+    <div id="editTodoFormModal" class="modal hidden">
+        <div class="todo-form-container">
+            <div class="close-modal-container">
+                <div id="editTodoCloseModalButton" class="close-modal-button">
+                    <h3>X</h3>
+                </div>
+            </div>
+            <form id="editTodoForm" >
+                <label for="title">Title:</label><br>
+                <input type="text" id="editTitle" name="title" required><br><br>
+        
+                <label for="description">Description:</label><br>
+                <textarea id="editDescription" name="description" rows="4" cols="50" required></textarea><br><br>
+        
+                <label for="dueDate">Due Date:</label><br>
+                <input type="date" id="editDueDate" name="dueDate" required><br><br>
+        
+                <label for="priority">Priority:</label><br>
+                <select id="editPriority" name="priority" required>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select><br><br>
+
+                <label for="checklist">Completed:</label><br>
+                <input type="checkbox" id="editChecklist" name="checklist"><br><br>
+        
+                <label for="notes">Notes:</label><br>
+                <textarea id="editNotes" name="notes" rows="4" cols="50"></textarea><br><br>
         
                 <input type="submit" value="Submit">
             </form>
