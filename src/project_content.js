@@ -9,6 +9,7 @@ const editProjectNameForm = document.querySelector('#editProjectNameForm')
 
 const editTodoFormModal = document.querySelector('#editTodoFormModal')
 const editTodoForm = document.querySelector('#editTodoForm')
+const deleteTodoButton = document.querySelector('#deleteTodoButton')
 
 const editProjectNameCloseModalButton = document.querySelector('#editProjectNameCloseModalButton')
 const editTodoCloseModalButton = document.querySelector('#editTodoCloseModalButton')
@@ -32,8 +33,8 @@ todoButtonContainer.classList.add('todo-button-container')
 const editProjectNameButton = document.createElement('button')
 editProjectNameButton.textContent = 'Edit Project Name'
 
-const removeProjectButton = document.createElement('button')
-removeProjectButton.textContent = 'Remove Project'
+const deleteProjectButton = document.createElement('button')
+deleteProjectButton.textContent = 'Delete Project'
 
 const addTodoButton = document.createElement('button')
 addTodoButton.textContent = 'Add To-do'
@@ -41,7 +42,7 @@ addTodoButton.classList.add('btn')
 addTodoButton.classList.add('add-todo-button')
 
 todoButtonContainer.appendChild(editProjectNameButton)
-todoButtonContainer.appendChild(removeProjectButton)
+todoButtonContainer.appendChild(deleteProjectButton)
 todoButtonContainer.appendChild(addTodoButton)
 
 const titleBar = document.createElement('div')
@@ -119,7 +120,7 @@ editTodoForm.addEventListener('submit', (event) => {
 
     let activeTodo = findActiveTodo()
 
-    editTodoFormModal.classList.add('hidden')
+    editTodoFormModal.classList.add('hidden ')
 
     const editTitle = document.querySelector('#editTitle')
     const editDescription = document.querySelector('#editDescription')
@@ -145,7 +146,7 @@ editTodoForm.addEventListener('submit', (event) => {
     updateTodoList()
 })
 
-removeProjectButton.addEventListener('click', () => {
+deleteProjectButton.addEventListener('click', () => {
     let active = findActiveProject()
 
     let index = listOfProjects.indexOf(active)
@@ -155,6 +156,19 @@ removeProjectButton.addEventListener('click', () => {
         updateProjectList()
         projectTitle.textContent = ''
         projectTodoContainer.textContent = ''
+    }
+})
+
+deleteTodoButton.addEventListener('click', () => {
+    let active = findActiveProject()
+    let activeTodo = findActiveTodo()
+
+    let index = active.todoList.indexOf(activeTodo)
+
+    if(index !== -1){
+        active.todoList.splice(index, 1)
+        updateTodoList()
+        editTodoFormModal.classList.add('hidden')
     }
 })
 
