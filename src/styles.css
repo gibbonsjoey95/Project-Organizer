@@ -38,7 +38,6 @@ body {
 .btn:hover {
     background-color: #2c3e50; 
     color: #95a5a6;
-    border: solid #95a5a6 3px;
 }
 
 .navbar {
@@ -127,10 +126,37 @@ body {
     color: #2c3e50;
 }
 
+.edit-project-name-button {
+    background-color: #2c3e50;
+    color: #95a5a6;
+    margin: 10px;
+}
+
+.edit-project-name-button:hover {
+    background-color: #95a5a6;
+    color: #2c3e50;
+}
+
+.delete-project-button {
+    background-color: #95a5a6;
+    color: #2c3e50;
+    margin: 10px;
+}
+
+.delete-project-button:hover {
+    background-color: #2c3e50;
+    color: #95a5a6;
+}
+
 .add-todo-button {
     margin-top: 20px;
     background-color: #2c3e50;
     color: #95a5a6;
+}
+
+.add-todo-button:hover {
+    background-color: #95a5a6;
+    color: #2c3e50;
 }
 
 .title-bar {
@@ -206,9 +232,10 @@ body {
 }
 
 .todo-form-container, .project-name-form-container {
-    background-color: #ffffff;
-    color: #212121;
-    padding: 20px;
+    border: #2c3e50 solid 2px;
+    background-color: #95a5a6;
+    color: #2c3e50;
+    padding: 30px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -235,4 +262,113 @@ body {
 
 .hidden {
     display: none;
+}
+
+.project-name-form-container {
+    background-color: #95a5a6; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+    max-width: 400px;
+}
+
+/* Close Modal Button Styling */
+.close-modal-container {
+    display: flex;
+    justify-content: flex-end; 
+    margin-bottom: 10px; 
+}
+
+.close-modal-button {
+    cursor: pointer; 
+    width: 30px;
+    height: 30px;
+    background-color: #ccc;
+    border-radius: 50%; 
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+/* Close Button Text Styling */
+.close-modal-button h3 {
+    margin: 0; 
+    font-size: 16px;
+    color: #555;
+}
+
+/* Project Name Form Styling */
+#projectNameForm {
+    display: flex;
+    flex-direction: column; 
+}
+
+/* Form Label Styling */
+label {
+    margin-bottom: 5px; 
+    font-weight: bold; 
+}
+
+/* Submit Button Styling */
+.submit, .delete-todo-button {
+    padding: 10px 20px;
+    background-color: #2c3e50; 
+    color: #95a5a6; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 16px;
+}
+
+.submit:hover, .delete-todo-button:hover {
+    background-color: #95a5a6; 
+    color: #2c3e50;
+}
+
+
+.close-modal-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px; 
+}
+
+.close-modal-button {
+    cursor: pointer; 
+    width: 30px;
+    height: 30px;
+    background-color: #ccc; 
+    border-radius: 50%; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+/* Close Button Text Styling */
+.close-modal-button h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #555;
+}
+
+/* Form Label Styling */
+label {
+    margin-bottom: 5px; 
+    font-weight: bold; 
+}
+
+/* Input Field Styling */
+input[type="text"],
+textarea,
+select {
+    width: 100%; 
+    padding: 8px; 
+    border: 1px solid #2c3e50;
+    border-radius: 5px; 
+    margin-bottom: 10px; 
+    font-size: 14px;
+}
+
+/* Checkbox Styling */
+input[type="checkbox"] {
+    margin-top: 5px; /* Add some space above the checkbox */
 }

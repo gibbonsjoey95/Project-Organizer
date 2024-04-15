@@ -3,7 +3,6 @@ import { updateProjectList } from "./sidebar"
 
 import { Todo } from "./todo"
 
-// Figure out a work around for this
 const editProjectNameFormModal = document.querySelector('#editProjectNameFormModal')
 const editProjectNameForm = document.querySelector('#editProjectNameForm')
 const editTodoFormModal = document.querySelector('#editTodoFormModal')
@@ -32,6 +31,10 @@ projectContainer.classList.add('project-content')
 projectTitleContainer.classList.add('project-title-container--content')
 projectTitle.classList.add('project-title')
 todoButtonContainer.classList.add('todo-button-container')
+editProjectNameButton.classList.add('edit-project-name-button')
+editProjectNameButton.classList.add('btn')
+deleteProjectButton.classList.add('delete-project-button')
+deleteProjectButton.classList.add('btn')
 addTodoButton.classList.add('btn')
 addTodoButton.classList.add('add-todo-button')
 titleBar.classList.add('title-bar')
@@ -233,6 +236,9 @@ const addEditedTodoToDom = () => {
 const openFormToEditTodo = (todo) => {
     editTodoFormModal.classList.remove('hidden')
     todo.active = true
+
+    const editTitle = document.querySelector('#editTitle')
+    editTitle.focus()
 }
 
 const openModalToEditProjectName = () => {
@@ -241,6 +247,7 @@ const openModalToEditProjectName = () => {
     let active = findActiveProject()
     const projectName = document.querySelector('#editProjectName')
     projectName.value = active.name
+    projectName.focus()
 }
 
 const editProjectName = () => {
@@ -288,6 +295,9 @@ const showProjectNameFormModal = () => {
 
 const showTodoModal = () => {
     todoFormModal.classList.remove('hidden')
+
+    const title = document.querySelector('#title')
+    title.focus()
 }
 
 const hideTodoModal = () => {

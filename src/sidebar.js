@@ -1,24 +1,21 @@
 import { listOfProjects, createProject } from "./create_project"
 import { mainContent } from "./project_content"
 
-// figure out a work around for this
 const projectNameFormModal = document.querySelector('#projectNameFormModal')
 const projectNameForm = document.querySelector('#projectNameForm')
-
 const projectNameCloseModalButton = document.querySelector('#projectNameCloseModalButton')
-
 const sidebarContainer = document.createElement('div')
 const projectTitleContainer = document.createElement('div')
 const buttonContainer = document.createElement('div')
+const addProjectButton = document.createElement('button')
 
 sidebarContainer.classList.add('sidebar')
 buttonContainer.classList.add('add-btn-container')
 projectTitleContainer.classList.add('project-title-container--sidebar')
-
-const addProjectButton = document.createElement('button')
-addProjectButton.textContent = "Add Project"
 addProjectButton.classList.add('btn')
 addProjectButton.classList.add('add-project-btn')
+
+addProjectButton.textContent = "Add Project"
 
 buttonContainer.appendChild(addProjectButton)
 
@@ -33,7 +30,8 @@ projectNameForm.addEventListener('submit', (event) => {
 })
 
 addProjectButton.addEventListener('click', () => {
-    showProjectNameFromModal()
+    showProjectNameFormModal()
+    addFocusToNameInput()
 })
 
 const updateProjectList = () => {
@@ -70,8 +68,13 @@ const hideProjectNameFormModal = () => {
     projectNameFormModal.classList.add('hidden')
 }
 
-const showProjectNameFromModal = () => {
+const showProjectNameFormModal = () => {
     projectNameFormModal.classList.remove('hidden')
+}
+
+const addFocusToNameInput = () => {
+    const projectName = document.querySelector('#projectName')
+    projectName.focus()
 }
 
 const sidebar = () => {
