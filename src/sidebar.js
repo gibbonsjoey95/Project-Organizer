@@ -23,25 +23,17 @@ addProjectButton.classList.add('add-project-btn')
 buttonContainer.appendChild(addProjectButton)
 
 projectNameCloseModalButton.addEventListener('click', () => {
-    projectNameFormModal.classList.add('hidden')
+    hideProjectNameFormModal()
 })
 
 projectNameForm.addEventListener('submit', (event) => {
     event.preventDefault()
-
-    const projectName = document.querySelector('#projectName')
-    
-    createProject(projectName.value)
-
-    projectNameFormModal.classList.add('hidden')
-
-    projectName.value = ''
-    
+    addNewProjectToDom()
     updateProjectList()   
 })
 
 addProjectButton.addEventListener('click', () => {
-    projectNameFormModal.classList.remove('hidden')
+    showProjectNameFromModal()
 })
 
 const updateProjectList = () => {
@@ -65,6 +57,21 @@ const updateProjectList = () => {
 
         projectTitleContainer.appendChild(item)
     }) 
+}
+
+const addNewProjectToDom = () => {
+    const projectName = document.querySelector('#projectName')
+    createProject(projectName.value)
+    hideProjectNameFormModal()
+    projectName.value = ''
+}
+
+const hideProjectNameFormModal = () => {
+    projectNameFormModal.classList.add('hidden')
+}
+
+const showProjectNameFromModal = () => {
+    projectNameFormModal.classList.remove('hidden')
 }
 
 const sidebar = () => {
