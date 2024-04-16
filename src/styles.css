@@ -185,6 +185,28 @@ body {
     border-radius: 10px;
     background-color: #95a5a6;
     cursor: pointer;
+
+    
+    position: relative;
+}
+
+.todo-container::before {
+    content: ''; /* Required for pseudo-elements */
+    width: 30px;
+    height: 30px;
+    border: 3px solid #ccc;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.todo-container[completed]::before {
+    content: '\2714'; /* Checkmark character */
+    font-size: 4rem;
+    line-height: 20px; /* Vertically center the checkmark */
+    text-align: left;
+    color: #4CAF50; /* Green color for completed tasks */
 }
 
 .todo-title-container {
@@ -215,8 +237,6 @@ body {
     font-size: 1.5rem;
     color: #2c3e50;
 }
-
-
 
 .modal {
     position: fixed;

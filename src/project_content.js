@@ -23,6 +23,8 @@ const addTodoButton = document.createElement('button')
 const titleBar = document.createElement('div')
 const projectTodoContainer = document.createElement('div')
 
+let activeTodoContainer
+
 editProjectNameButton.textContent = 'Edit Project Name'
 deleteProjectButton.textContent = 'Delete Project'
 addTodoButton.textContent = 'Add To-do'
@@ -123,6 +125,8 @@ const createTodoDom = (active) => {
         const todoDueDate = document.createElement('p')
         const todoPriority = document.createElement('p')
         
+        // todoContainer.setAttribute('completed', '')
+        
         todoContainer.classList.add('todo-container')
         todoTitleContainer.classList.add('todo-title-container')
         todoTitle.classList.add('todo-title')
@@ -145,6 +149,8 @@ const createTodoDom = (active) => {
         todoContainer.addEventListener('click', () => {
             openFormToEditTodo(todo)
             editTodo()
+            
+            activeTodoContainer = todoContainer
         })
 
         projectTodoContainer.appendChild(todoContainer)
@@ -191,10 +197,14 @@ const addTodoToDom = () => {
     const checklist = document.querySelector('#checklist')
     const notes = document.querySelector('#notes')
 
+    // const todoContainers = document.querySelectorAll('.todo-container')
+
     let active = findActiveProject()
     let newTodo = new Todo(title.value, description.value, dueDate.value, priority.value, checklist.checked, notes.value)
-    
+
     active.todoList.push(newTodo)
+
+    // console.log(todoContainers)
 
     todoFormModal.classList.add('hidden')
     
@@ -208,15 +218,19 @@ const addTodoToDom = () => {
 
 const addEditedTodoToDom = () => {
     let activeTodo = findActiveTodo()
-
+   
     editTodoFormModal.classList.add('hidden')
-
+    
     const editTitle = document.querySelector('#editTitle')
     const editDescription = document.querySelector('#editDescription')
     const editDueDate = document.querySelector('#editDueDate')
     const editPriority = document.querySelector('#editPriority')
     const editChecklist = document.querySelector('#editChecklist')
     const editNotes = document.querySelector('#editNotes')
+
+    if(activeTodo.checklist = true){
+        activeTodoContainer.setAttribute('completed', '')
+    }
 
     activeTodo.title = editTitle.value
     activeTodo.description = editDescription.value

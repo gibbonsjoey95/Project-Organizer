@@ -1,5 +1,4 @@
 import { Project } from "./project"
-import { Todo } from "./todo"
 
 const listOfProjects = [
     {
@@ -12,7 +11,7 @@ const listOfProjects = [
                 description: 'Description of the todo',
                 dueDate: 'April 10, 2024',
                 priority: 'High',
-                checklist: 'incomplete',
+                checklist: false,
                 notes: 'This is just default',
                 id: 1,
                 active: false
