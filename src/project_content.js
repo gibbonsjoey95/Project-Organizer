@@ -23,8 +23,6 @@ const addTodoButton = document.createElement('button')
 const titleBar = document.createElement('div')
 const projectTodoContainer = document.createElement('div')
 
-let activeTodoContainer
-
 editProjectNameButton.textContent = 'Edit Project Name'
 deleteProjectButton.textContent = 'Delete Project'
 addTodoButton.textContent = 'Add To-do'
@@ -125,8 +123,6 @@ const createTodoDom = (active) => {
         const todoDueDate = document.createElement('p')
         const todoPriority = document.createElement('p')
         
-        // todoContainer.setAttribute('completed', '')
-        
         todoContainer.classList.add('todo-container')
         todoTitleContainer.classList.add('todo-title-container')
         todoTitle.classList.add('todo-title')
@@ -145,16 +141,38 @@ const createTodoDom = (active) => {
         todoContainer.appendChild(todoTitleContainer)
         todoContainer.appendChild(todoTitleBar)
         todoContainer.appendChild(todoContentContainer)
-
-        todoContainer.addEventListener('click', () => {
+        
+        todoContainer.addEventListener('click', () => {          
+            // initial bug. After setting example todo 
+            
             openFormToEditTodo(todo)
             editTodo()
-            
-            activeTodoContainer = todoContainer
         })
 
         projectTodoContainer.appendChild(todoContainer)
     })
+
+    handleTodoCompletionStatus()
+}
+
+const handleTodoCompletionStatus = () => {
+    const todoContainers = document.querySelectorAll('.todo-container');
+
+    let active = findActiveProject()
+    let activeTodo = findActiveTodo()
+    console.log('active',activeTodo)
+
+    for(let i = 0; i < active.todoList.length; i++){
+        if(todoContainers[i]){
+            if(active.todoList[i].checklist){
+                todoContainers[i].setAttribute('completed', '')
+            } else {
+                if(todoContainers[i].hasAttribute('completed')){
+                    todoContainers[i].removeAttribute('completed')
+                }
+            }
+        }
+    }
 }
 
 const updateProjectTitle = () => {
@@ -185,7 +203,7 @@ const editTodo = () => {
     editDescription.value = activeTodo.description
     editDueDate.value = activeTodo.dueDate
     editPriority.value = activeTodo.priority
-    editChecklist.value = activeTodo.checklist
+    editChecklist.checked = activeTodo.checklist
     editNotes.value = activeTodo.notes
 }
 
@@ -197,14 +215,10 @@ const addTodoToDom = () => {
     const checklist = document.querySelector('#checklist')
     const notes = document.querySelector('#notes')
 
-    // const todoContainers = document.querySelectorAll('.todo-container')
-
     let active = findActiveProject()
     let newTodo = new Todo(title.value, description.value, dueDate.value, priority.value, checklist.checked, notes.value)
 
     active.todoList.push(newTodo)
-
-    // console.log(todoContainers)
 
     todoFormModal.classList.add('hidden')
     
@@ -228,22 +242,18 @@ const addEditedTodoToDom = () => {
     const editChecklist = document.querySelector('#editChecklist')
     const editNotes = document.querySelector('#editNotes')
 
-    if(activeTodo.checklist = true){
-        activeTodoContainer.setAttribute('completed', '')
-    }
-
     activeTodo.title = editTitle.value
     activeTodo.description = editDescription.value
     activeTodo.dueDate = editDueDate.value
     activeTodo.priority = editPriority.value
-    activeTodo.checklist = editChecklist.value
+    activeTodo.checklist = editChecklist.checked
     activeTodo.notes = editNotes.value
 
     editTitle.value = ''
     editDescription.value = ''
     editDueDate.value = ''
     editPriority.value = ''
-    editChecklist.value = ''
+    editChecklist.checked = false
     editNotes.value = ''
 }
 

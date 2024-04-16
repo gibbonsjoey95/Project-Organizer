@@ -9,7 +9,7 @@ const listOfProjects = [
             {
                 title: 'Title',
                 description: 'Description of the todo',
-                dueDate: 'April 10, 2024',
+                dueDate: '2024-04-17',
                 priority: 'High',
                 checklist: false,
                 notes: 'This is just default',
