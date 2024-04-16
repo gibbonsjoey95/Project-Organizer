@@ -248,6 +248,7 @@ const addEditedTodoToDom = () => {
     activeTodo.priority = editPriority.value
     activeTodo.checklist = editChecklist.checked
     activeTodo.notes = editNotes.value
+    activeTodo.active = false
 
     editTitle.value = ''
     editDescription.value = ''
@@ -255,6 +256,7 @@ const addEditedTodoToDom = () => {
     editPriority.value = ''
     editChecklist.checked = false
     editNotes.value = ''
+
 }
 
 const openFormToEditTodo = (todo) => {
